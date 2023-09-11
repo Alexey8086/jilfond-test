@@ -1,0 +1,22 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Roboto+Mono&display=swap');
+// https://fonts.google.com/specimen/Montserrat
+
+
+// Font Variables
+$montserrat-font: 'Montserrat', monospace;
+
+@mixin light {
+    font-family: $montserrat-font;
+    font-weight: 300;
+}
+
+@mixin regular {
+    font-family: $montserrat-font;
+    font-weight: 400;
+}
+
+@mixin medium {
+    font-family: $montserrat-font;
+    font-weight: 500;
+}
