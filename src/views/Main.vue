@@ -53,7 +53,7 @@ import ImgIcon from '@/components/icons/photo.vue'
 import Card from '@/components/UI/Card.vue'
 import Sidebar from '@/components/UI/Sidebar.vue'
 import { HollowDotsSpinner  } from 'epic-spinners'
-import { computed, reactive, toRaw, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 
 export default {

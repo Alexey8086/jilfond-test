@@ -5,7 +5,6 @@ import { $host } from "@/axios.js"
 export default createStore({
   state() {
 
-
     return {
       users: null,
       selectedUserId: null,
@@ -46,6 +45,7 @@ export default createStore({
     }
   },
   actions: {
+    // показываем сообщением пользователю о ошибке на 7 секунд
     message({commit}, message) {
       commit('setMessage', message)
       setTimeout(() => commit('setClearMessage'), 7000)
@@ -54,15 +54,11 @@ export default createStore({
     // Загружает пользовательские данные по id
     async loadUser({ commit, dispatch }, id) {
       try {
-          const res = await $host.get(`?id=${id}`)
-          if (res.data) {
-            commit('setSelectedUser', res.data[0])
-          }
+        const res = await $host.get(`?id=${id}`)
+        if (res.data) commit('setSelectedUser', res.data[0])
+
       } catch (e) {
-          dispatch('message', {
-              value: error(e.response.data.message),
-              type: 'danger'
-          }, {root: true})
+        console.error(e)
       }
     },
 
@@ -74,17 +70,12 @@ export default createStore({
 
         // Объединяем массив в строку, убираем последний знак - &
         reqUrl = reqUrl.join('').slice(0, -1)
-        console.log('request URL ---- >>> ', reqUrl)
 
         const res = await $host.get(`?${reqUrl}`)
         if (res.data?.length) commit('setUsers', res.data)
         else commit('setUsers', null)
       } catch (e) {
-        console.log(e)
-          // dispatch('message', {
-          //     value: error(e.response.data.message),
-          //     type: 'danger'
-          // }, {root: true})
+        console.error(e)
       }
     },
    
@@ -94,11 +85,7 @@ export default createStore({
         if (res.data?.length) commit('setUsers', res.data)
         else commit('setUsers', null)
       } catch (e) {
-        console.log(e)
-          // dispatch('message', {
-          //     value: error(e.response.data.message),
-          //     type: 'danger'
-          // }, {root: true})
+        console.error(e)
       }
     }
     
