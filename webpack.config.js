@@ -1,6 +1,8 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// добавляем поддержку переменных окружения
+const DotenvWebpackPlugin = require('dotenv-webpack')
 
 module.exports = (env, argv) => {
     // const isProduction = argv.mode === 'production'
@@ -68,6 +70,7 @@ module.exports = (env, argv) => {
             ]
         },
         plugins: [
+            new DotenvWebpackPlugin(),
             new VueLoaderPlugin(),
             new HtmlWebpackPlugin({
                 template: 'public/index.html'

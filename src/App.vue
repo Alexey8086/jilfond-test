@@ -1,28 +1,18 @@
 <template>
-    <!-- 
-        Динамические компонеты, конкатенация строк
-        (на выходе получаем в параметре "is" полное название ранее созданного лэйаута).
-        Подгружаем тот лэйаут, который указан в роутере
-    -->
-        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, dolorum.</h1>
+
+    <Message />
+    <Main></Main>
 
 </template>
   
 <script>
-import { useRoute } from 'vue-router'
-import { ref, computed, onMounted, watch} from 'vue'
-import { useStore } from 'vuex'
+import Main from '@/views/Main.vue'
+import Message from '@/components/UI/Message.vue'
 
 
 export default {
-    components: {  },
+    components: { Main, Message },
     setup() {
-        const route = useRoute()
-        const store = useStore()
-        
-
-
-
 
         return {
 
@@ -33,8 +23,7 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
     @import '@/styles/libs/reset.scss';
-
 </style> 
   
